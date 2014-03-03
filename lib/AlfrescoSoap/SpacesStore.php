@@ -18,8 +18,7 @@
  * along with Alfresco. If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once('Store.php');
-require_once('Node.php');
+namespace AlfrescoSoap;
 
 class SpacesStore extends Store {
 	private $_companyHome;

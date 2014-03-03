@@ -18,7 +18,7 @@
  * along with Alfresco. If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once('AlfrescoWebService.php');
+namespace AlfrescoSoap\WebService;
 
 class WebServiceFactory {
 	public static function getAuthenticationService($path) {

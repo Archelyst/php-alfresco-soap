@@ -18,8 +18,9 @@
  * along with Alfresco. If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once('Alfresco/Service/WebService/WebServiceFactory.php');
-require_once('Alfresco/Service/BaseObject.php');
+namespace AlfrescoSoap;
+
+use AlfrescoSoap\WebService\WebServiceFactory;
 
 if (!isset($_SESSION)) {
 	// Start the session

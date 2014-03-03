@@ -18,9 +18,9 @@
  * along with Alfresco. If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once('Store.php');
-require_once('Node.php');
-require_once('WebService/WebServiceFactory.php');
+namespace AlfrescoSoap;
+
+use AlfrescoSoap\WebService\WebServiceFactory;
 
 class Session extends BaseObject {
 	public $authenticationService;

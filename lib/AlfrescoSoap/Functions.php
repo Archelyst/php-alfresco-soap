@@ -18,8 +18,7 @@
  * along with Alfresco. If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once('Alfresco/Service/Repository.php');
-require_once('Alfresco/Service/Session.php');
+namespace AlfrescoSoap;
 
 /**
  * Uploads a file into content store and returns the content data string which

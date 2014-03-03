@@ -18,6 +18,8 @@
  * along with Alfresco. If not, see <http://www.gnu.org/licenses/>.
  */
 
+namespace AlfrescoSoap;
+
 class Association extends BaseObject {
 	private $_from;
 	private $_to;

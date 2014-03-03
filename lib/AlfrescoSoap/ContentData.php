@@ -18,7 +18,7 @@
  * along with Alfresco. If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once('Alfresco/Service/Functions.php');
+namespace AlfrescoSoap;
 
 class ContentData extends BaseObject {
 	private $_isPopulated = FALSE;

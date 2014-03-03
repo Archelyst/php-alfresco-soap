@@ -18,6 +18,8 @@
  * along with Alfresco. If not, see <http://www.gnu.org/licenses/>.
  */
 
+namespace AlfrescoSoap\WebService;
+
 class AlfrescoWebService extends SoapClient {
 	private $securityExtNS = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd";
 	private $wsUtilityNS = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd";

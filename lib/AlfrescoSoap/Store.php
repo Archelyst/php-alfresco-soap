@@ -18,8 +18,7 @@
  * along with Alfresco. If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once('BaseObject.php');
-require_once('Node.php');
+namespace AlfrescoSoap;
 
 class Store extends BaseObject {
 	protected $_session;

@@ -18,13 +18,9 @@
  * along with Alfresco. If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once('Store.php');
-require_once('ChildAssociation.php');
-require_once('Association.php');
-require_once('NamespaceMap.php');
-require_once('ContentData.php');
-require_once('VersionHistory.php');
-require_once('Version.php');
+namespace AlfrescoSoap;
+
+use AlfrescoSoap\WebService\WebServiceFactory;
 
 class Node extends BaseObject {
 	/** @var Session */

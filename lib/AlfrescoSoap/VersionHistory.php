@@ -18,6 +18,10 @@
  * along with Alfresco. If not, see <http://www.gnu.org/licenses/>.
  */
 
+namespace AlfrescoSoap;
+
+use AlfrescoSoap\WebService\WebServiceFactory;
+
 /**
  * Version history class.
  *
@@ -26,7 +30,7 @@
 class VersionHistory extends BaseObject {
 	/**
 	 * Node to which this version history relates
-	 * @var \Node
+	 * @var Node
 	 */
 	private $_node;
 
@@ -46,7 +50,7 @@ class VersionHistory extends BaseObject {
 	/**
 	 * Get the node that this version history relates to
 	 *
-	 * @return \Node
+	 * @return Node
 	 */
 	public function getNode() {
 		return $this->_node;
