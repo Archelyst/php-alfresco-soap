@@ -46,5 +46,3 @@ $alfImpersonateUsers = array(
 	),
 );
 */
-
-?>

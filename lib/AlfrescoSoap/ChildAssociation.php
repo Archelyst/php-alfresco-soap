@@ -61,5 +61,3 @@ class ChildAssociation extends BaseObject {
 		return $this->_nthSibling;
 	}
 }
-
-?>

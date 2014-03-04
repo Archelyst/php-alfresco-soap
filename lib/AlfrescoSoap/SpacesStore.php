@@ -39,5 +39,3 @@ class SpacesStore extends Store {
 		return $this->_companyHome;
 	}
 }
-
-?>

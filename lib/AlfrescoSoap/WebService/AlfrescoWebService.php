@@ -99,5 +99,3 @@ class AlfrescoWebService extends SoapClient {
 		return parent::__doRequest($request, $location, $action, $version);
 	}
 }
-
-?>

@@ -46,5 +46,3 @@ class WebServiceFactory {
 		return new AlfrescoWebService($path, array(), $ticket);
 	}
 }
-
-?>

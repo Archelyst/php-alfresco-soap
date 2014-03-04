@@ -17,12 +17,11 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Alfresco. If not, see <http://www.gnu.org/licenses/>.
  */
- 
+
  /*
   * Set the repository URL, username and password that the samples should use in this configuration file.
   */
-  
+
   $repositoryUrl = "http://localhost:8080/alfresco/api";
   $userName = "admin";
-  $password = "admin"; 
-?>
+  $password = "admin";

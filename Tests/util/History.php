@@ -143,5 +143,3 @@ class util_History {
 		}
 	}
 }
-
-?>

@@ -111,5 +111,3 @@ class Repository extends BaseObject {
 		return $result;
 	}
 }
-
-?>

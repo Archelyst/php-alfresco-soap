@@ -23,5 +23,3 @@ class util_TestRunner {
         return $result;
     }
 }
-
-?>

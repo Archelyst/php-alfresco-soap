@@ -43,5 +43,3 @@ class Association extends BaseObject {
 		return $this->_type;
 	}
 }
-
-?>

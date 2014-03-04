@@ -260,5 +260,3 @@ class Session extends BaseObject {
 		return $sessionId;
 	}
 }
-
-?>

@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Alfresco. If not, see <http://www.gnu.org/licenses/>.
  */
- 
+
 require_once('PHPUnit/Framework/TestCase.php');
 require_once('Alfresco/Service/Session.php');
 require_once('Alfresco/Service/Repository.php');
@@ -28,26 +28,26 @@ class BaseTest extends PHPUnit_Framework_TestCase
    const USERNAME = "admin";
    const PASSWORD = "admin";
    const URL = "http://localhost:8080/alfresco/api";
-  
+
    private static $_repository;
-   private static $_session; 
-   private static $_companyHome;  
-   
+   private static $_session;
+   private static $_companyHome;
+
    protected function getStore()
    {
-      return new Store($this->getSession(), "SpacesStore");	
+      return new Store($this->getSession(), "SpacesStore");
    }
-   
+
    protected function getRepository()
    {
       if (self::$_repository == null)
       {
       	 // Create the repository
       	 self::$_repository = new Repository(BaseTest::URL);
-      }		
+      }
       return self::$_repository;
    }
-   
+
    protected function getSession()
    {
    	  if (self::$_session == null)
@@ -58,17 +58,17 @@ class BaseTest extends PHPUnit_Framework_TestCase
    	  }
    	  return self::$_session;
    }
-   
+
    protected function getCompanyHome()
    {
    	   if (self::$_companyHome == null)
    	   {
    	   	  $nodes = $this->getSession()->query($this->getStore(), 'PATH:"app:company_home"');
-	           self::$_companyHome = $nodes[0]; 
+	           self::$_companyHome = $nodes[0];
    	   }
    	   return self::$_companyHome;
    }
-   
+
    protected function createContentNode($content="Some simple content")
    {
    	   try
@@ -76,23 +76,22 @@ class BaseTest extends PHPUnit_Framework_TestCase
 	   		// Create a new content node in the company home
 			$fileName = "myDoc_" . time() . ".txt";
 			$contentNode = $this->getCompanyHome()->createChild(
-															"cm_content", 
-															"cm_contains", 
+															"cm_content",
+															"cm_contains",
 															"app_" .$fileName);
 			$contentNode->cm_name = $fileName;
 			$contentNode->updateContent("cm_content", "text/plain", "UTF-8", $content);
-			
+
 			// Save new content
 			$this->getSession()->save();
    	   }
    	   catch (Exception $e)
    	   {
    	      echo "createContentNode Exception: ".$e->getMessage()."<br>";
-   	      echo "createContentNode Trace: ".$e->getTraceAsString()."<br>";    
-   	      throw $e;		   	   
-   	   }	
-		
+   	      echo "createContentNode Trace: ".$e->getTraceAsString()."<br>";
+   	      throw $e;
+   	   }
+
 	   return $contentNode;
    	}
 }
-?>

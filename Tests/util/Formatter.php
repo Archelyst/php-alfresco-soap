@@ -243,5 +243,3 @@ class util_Formatter implements PHPUnit_Framework_TestListener
 		}
 	}
 }
-
-?>

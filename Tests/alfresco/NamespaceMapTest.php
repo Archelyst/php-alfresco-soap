@@ -17,11 +17,11 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Alfresco. If not, see <http://www.gnu.org/licenses/>.
  */
- 
+
 require_once('Alfresco/Service/NamespaceMap.php');
 
 class NamespaceMapTest extends PHPUnit2_Framework_TestCase
-{	
+{
    	public function testGetShortName()
    	{
    		$namespaceMap = new NamespaceMap();
@@ -47,10 +47,10 @@ class NamespaceMapTest extends PHPUnit2_Framework_TestCase
 		$this->assertTrue($namespaceMap->isShortName("sys_some_prop"));
 		$this->assertFalse($namespaceMap->isShortName("sys_"));
 	}
-	
+
 	public function testGetFullName()
 	{
-   		$namespaceMap = new NamespaceMap();	   	
+   		$namespaceMap = new NamespaceMap();
    		$fullName1 = $namespaceMap->getFullName("cm_name");
 		$this->assertEquals("{http://www.alfresco.org/model/content/1.0}name", $fullName1);
 		$fullName2 = $namespaceMap->getFullName("sys_uuid");
@@ -62,9 +62,6 @@ class NamespaceMapTest extends PHPUnit2_Framework_TestCase
 		$fullName5 = $namespaceMap->getFullName("sys_some_prop");
 		$this->assertEquals("{http://www.alfresco.org/model/system/1.0}some-prop", $fullName5);
 		$fullName6 = $namespaceMap->getFullName("sys_");
-		$this->assertEquals("sys_", $fullName6);		
+		$this->assertEquals("sys_", $fullName6);
 	}
 }
-
-?>
-

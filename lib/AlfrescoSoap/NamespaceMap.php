@@ -98,5 +98,3 @@ class NamespaceMap {
 		return $result;
 	}
 }
-
-?>

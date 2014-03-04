@@ -98,5 +98,3 @@ function upload_file($session, $filePath, $mimetype = NULL, $encoding = NULL) {
 
 	return $result;
 }
-
-?>

@@ -707,5 +707,3 @@ class Node extends BaseObject {
 		$this->addedAssociations = array();
 	}
 }
-
-?>

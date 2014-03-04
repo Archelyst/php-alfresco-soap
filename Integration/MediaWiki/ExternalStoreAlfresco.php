@@ -244,5 +244,3 @@ class ExternalStoreAlfresco {
 		return $title;
 	}
 }
-
-?>

@@ -63,5 +63,3 @@ class Store extends BaseObject {
 		return $this->_rootNode;
 	}
 }
-
-?>

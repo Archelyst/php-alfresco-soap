@@ -166,5 +166,3 @@ class Version extends BaseObject {
 		}
 	}
 }
-
-?>

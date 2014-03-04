@@ -246,5 +246,3 @@ class ContentData extends BaseObject {
 		$statements[$statement] = $result;
 	}
 }
-
-?>

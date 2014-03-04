@@ -75,5 +75,3 @@ class VersionHistory extends BaseObject {
 		// TODO populate the version history from the result of the web service call
 	}
 }
-
-?>

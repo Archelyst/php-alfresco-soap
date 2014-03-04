@@ -17,13 +17,13 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Alfresco. If not, see <http://www.gnu.org/licenses/>.
  */
- 
+
 require_once ('BaseTest.php');
 require_once ('Alfresco/Service/Version.php');
 
-class VersionTest extends BaseTest 
+class VersionTest extends BaseTest
 {
-	public function testVersion() 
+	public function testVersion()
 	{
 		// First create a new content node
 		$node = $this->createContentNode("origional content");
@@ -31,23 +31,23 @@ class VersionTest extends BaseTest
 		$node->cm_title = "origional title";
 		$node->cm_description = "origional description";
 		$this->getSession()->save();
-		
+
 		// Try and version the content
 		$version = $node->createVersion();
-		
+
 		// Do some checks!
 		$this->assertTrue($node->hasAspect("cm_versionable"));
 		$this->assertEquals("1.0", $node->cm_versionLabel);
-		
-		// Make some more modifications 
+
+		// Make some more modifications
 		$node->title = "changed title";
 		$node->description = "changed description";
 		$node->cm_content->content = "changed content";
 		$this->getSession()->save();
-		
+
 		// Check that we can still retireve the versioned content and property values
 		$this->assertEquals("origional title", $version->cm_title);
-		$this->assertEquals("origional description", $version->cm_description);	
+		$this->assertEquals("origional description", $version->cm_description);
 		echo "content: ".$version->cm_content->content."<br>";
 		echo "content: ".$node->cm_content->content."<br>";
 	}
@@ -60,20 +60,18 @@ class VersionTest extends BaseTest
 		$node->cm_title = "origional title";
 		$node->cm_description = "origional description";
 		$this->getSession()->save();
-		
-		// Version the content a couple of times ...	
+
+		// Version the content a couple of times ...
 		$version1 = $node->createVersion();
 		$version2 = $node->createVersion();
 		$version3 = $node->createVersion();
-		
+
 		// Sanity check
 		$this->assertTrue($node->hasAspect("cm_versionable"));
 		$this->assertEquals("1.2", $node->cm_versionLabel);
-		
+
 		// Get the version history
 		$versionHistory = $node->versionHistory;
 	}
-	
-}
-?>
 
+}
