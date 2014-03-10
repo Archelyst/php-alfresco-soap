@@ -45,4 +45,9 @@ class WebServiceFactory {
 		$path .= '/AuthoringService?wsdl';
 		return new AlfrescoWebService($path, array(), $ticket);
 	}
+
+    public static function getAccessControlService($path, $ticket) {
+        $path .= '/AccessControlService?wsdl';
+        return new AlfrescoWebService($path, array(), $ticket);
+    }
 }

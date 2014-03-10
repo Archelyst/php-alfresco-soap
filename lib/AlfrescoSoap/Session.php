@@ -26,12 +26,11 @@ class Session extends BaseObject {
 	public $authenticationService;
 	public $repositoryService;
 	public $contentService;
+	public $accessControlService;
 
 	private $_repository;
 	private $_ticket;
-	/** @var Store[] */
 	private $_stores;
-	/** @var NamespaceMap */
 	private $_namespaceMap;
 
 	private $nodeCache;
@@ -51,6 +50,7 @@ class Session extends BaseObject {
 
 		$this->repositoryService = WebServiceFactory::getRepositoryService($this->_repository->connectionUrl, $this->_ticket);
 		$this->contentService = WebServiceFactory::getContentService($this->_repository->connectionUrl, $this->_ticket);
+		$this->accessControlService = WebServiceFactory::getAccessControlService($this->_repository->connectionUrl, $this->_ticket);
 	}
 
 	/**
