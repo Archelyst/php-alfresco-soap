@@ -22,17 +22,16 @@ namespace AlfrescoSoap;
 
 use AlfrescoSoap\WebService\WebServiceFactory;
 
-if (!isset($_SESSION)) {
-	// Start the session
-	session_start();
-}
-
 class Repository extends BaseObject {
 	private $_connectionUrl;
 	private $_host;
 	private $_port;
 
 	public function __construct($connectionUrl = "http://localhost:8080/alfresco/api") {
+		if (!isset($_SESSION)) {
+			// Start the session
+			session_start();
+		}
 		$this->_connectionUrl = $connectionUrl;
 		$parts = parse_url($connectionUrl);
 		$this->_host = $parts["host"];
