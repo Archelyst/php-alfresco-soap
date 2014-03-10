@@ -40,6 +40,7 @@ class Node extends BaseObject {
 	private $addedAspects;
 	private $removedAspects;
 	private $addedChildren;
+	private $removedChildren;
 	private $addedParents;
 	private $addedAssociations;
 	private $removedAssociations;
@@ -59,6 +60,7 @@ class Node extends BaseObject {
 		$this->addedChildren = array();
 		$this->addedParents = array();
 		$this->addedAssociations = array();
+		$this->removedChildren = array();
 	}
 
 	/**
@@ -131,9 +133,9 @@ class Node extends BaseObject {
 
 		if (in_array($aspect, $this->_aspects)) {
 			$this->remove_array_value($aspect, $this->_aspects);
-			$this->remove_array_value($aspect, $this->addedAspects);
 			$this->removedAspects[] = $aspect;
 		}
+		$this->remove_array_value($aspect, $this->addedAspects);
 	}
 
 	public function createChild($type, $associationType, $associationName) {
@@ -174,6 +176,12 @@ class Node extends BaseObject {
 	}
 
 	public function removeChild($childAssociation) {
+	    $this->populateChildren();
+		if (in_array($childAssociation, $this->_children)) {
+			$this->remove_array_value($childAssociation, $this->_children);
+			$this->removedChildren[] = $childAssociation;
+		}
+		$this->remove_array_value($childAssociation, $this->addedChildren);
 	}
 
 	public function addAssociation($to, $associationType) {
@@ -231,17 +239,14 @@ class Node extends BaseObject {
 	 * @return bool
 	 */
 	private function isDirty() {
-		$result = true;
-		if (!$this->_isNewNode &&
+		return !(!$this->_isNewNode &&
 			count($this->getModifiedProperties()) == 0 &&
 			($this->addedAspects === NULL || count($this->addedAspects) == 0) &&
 			($this->removedAssociations === NULL || count($this->removedAssociations) == 0) &&
 			($this->addedChildren === NULL || count($this->addedChildren) == 0) &&
+			($this->removedChildren === NULL || count($this->removedChildren) == 0) &&
 			($this->addedAssociations === NULL || count($this->addedAssociations) == 0)
-		) {
-			$result = FALSE;
-		}
-		return $result;
+		);
 	}
 
 	public function __get($name) {
@@ -581,6 +586,20 @@ class Node extends BaseObject {
 				$temp = $temp + $this->getWhereArray();
 				$this->addStatement($statements, "addChild", $temp);
 			}
+		}
+
+		// Add the removeChildren
+		foreach ($this->removedChildren as $childAssociation) {
+			$child = $this->getPredicateArray("where", $childAssociation->child);
+			$parent = array();
+			if ($this->_isNewNode) {
+				$parent["from_id"] = $this->_id;
+			} else {
+				$parent["from"] = array(
+					"store" => $this->_store->__toArray(),
+					"uuid" => $this->_id);
+			}
+			$this->addStatement($statements, "removeChild", $parent + $child);
 		}
 
 		// Add associations
