@@ -34,7 +34,8 @@ class NamespaceMap {
 		"view" => "http://www.alfresco.org/view/repository/1.0",
 		"security" => "http://www.alfresco.org/model/security/1.0",
 		"wcm" => "http://www.alfresco.org/model/wcmmodel/1.0",
-		"wca" => "http://www.alfresco.org/model/wcmappmodel/1.0");
+		"wca" => "http://www.alfresco.org/model/wcmappmodel/1.0",
+		"ver" => "http://www.alfresco.org/model/versionstore/2.0");
 
 	public function add($shortName, $fullname) {
 	    $this->namespaceMap[$shortName] = $fullname;
