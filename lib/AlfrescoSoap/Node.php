@@ -23,12 +23,11 @@ namespace AlfrescoSoap;
 use AlfrescoSoap\WebService\WebServiceFactory;
 
 class Node extends BaseObject {
-	/** @var Session */
 	private $_session;
-	/** @var Store */
 	private $_store;
 	private $_id;
 	private $_type;
+	private $_path;
 	private $_aspects;
 	private $_properties;
 	private $_children;
@@ -302,6 +301,13 @@ class Node extends BaseObject {
 		return $this->_id;
 	}
 
+	public function getPath() {
+		if (!$this->_path) {
+			$this->populateProperties();
+		}
+		return $this->_path;
+	}
+
 	public function getIsNewNode() {
 		return $this->_isNewNode;
 	}
@@ -385,6 +391,7 @@ class Node extends BaseObject {
 
 	private function populateFromWebServiceNode($webServiceNode) {
 		$this->_type = $webServiceNode->type;
+		$this->_path = $webServiceNode->reference->path;
 
 		// Get the aspects
 		$this->_aspects = array();
