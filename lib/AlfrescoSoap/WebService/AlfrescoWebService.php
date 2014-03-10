@@ -51,7 +51,32 @@ class AlfrescoWebService extends SoapClient {
 			}
 		}
 
-		return parent::__soapCall($function_name, $arguments, $options, $input_headers, $output_headers);
+		try {
+		    return parent::__soapCall($function_name, $arguments, $options, $input_headers, $output_headers);
+		}
+		catch (SoapFault $sf) {
+			// pull infos from the real exception up so it is visible when it raises
+			if (isset($sf->detail->exceptionName)) {
+				if (isset($sf->detail->faultData)) {
+					$faultData = $sf->detail->faultData;
+				}
+				else {
+					$faultClass = substr(strrchr($sf->detail->exceptionName, "."), 1);
+					if (isset($sf->detail->$faultClass)) {
+						$faultData = $sf->detail->$faultClass;
+					}
+			    }
+				if (isset($faultData)) {
+					$newsf = new SoapFault((string)$sf->getCode(),
+											$faultData->message,
+											null,
+											$sf->detail->stackTrace,
+											$sf->detail->exceptionName);
+					throw $newsf;
+				}
+			}
+			throw $sf;
+		}
 	}
 
 	public function __doRequest($request, $location, $action, $version, $one_way = 0) {
