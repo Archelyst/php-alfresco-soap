@@ -235,6 +235,16 @@ class Session extends BaseObject {
 	}
 
 	/**
+	 * Add a namespace to the map.
+	 */
+	public function addNamespace($shortName, $fullName) {
+		if ($this->_namespaceMap === NULL) {
+			$this->_namespaceMap = new NamespaceMap();
+		}
+		$this->_namespaceMap->add($shortName, $fullName);
+	}
+
+	/**
 	 * Gets the stores.
 	 *
 	 * @return Store[]
