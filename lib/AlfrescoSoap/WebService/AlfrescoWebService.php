@@ -39,7 +39,7 @@ class AlfrescoWebService extends SoapClient {
 		return $this->__soapCall($function_name, $arguments);
 	}
 
-	public function __soapCall($function_name, $arguments = array(), $options = array(), $input_headers = array(), $output_headers = array()) {
+	public function __soapCall($function_name, $arguments, $options = array(), $input_headers = array(), $output_headers = array()) {
 		if (isset($this->ticket)) {
 			// Automatically add a security header
 			$input_headers[] = new SoapHeader($this->securityExtNS, 'Security', NULL, 1);
@@ -54,7 +54,7 @@ class AlfrescoWebService extends SoapClient {
 		return parent::__soapCall($function_name, $arguments, $options, $input_headers, $output_headers);
 	}
 
-	public function __doRequest($request, $location, $action, $version) {
+	public function __doRequest($request, $location, $action, $version, $one_way = 0) {
 		// If this request requires authentication we have to manually construct the
 		// security headers.
 		if (isset($this->ticket)) {
@@ -96,6 +96,6 @@ class AlfrescoWebService extends SoapClient {
 			$request = $dom->saveXML();
 		}
 
-		return parent::__doRequest($request, $location, $action, $version);
+		return parent::__doRequest($request, $location, $action, $version, $one_way);
 	}
 }
