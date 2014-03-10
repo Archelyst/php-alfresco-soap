@@ -337,6 +337,11 @@ class Node extends BaseObject {
 		$this->_properties = $properties;
 	}
 
+	public function getContentString() {
+		$this->populateProperties();
+		return $this->_properties['content_string'];
+	}
+
 	/**
 	 * Accessor for the versionHistory property.
 	 *
@@ -420,6 +425,7 @@ class Node extends BaseObject {
 			if (!$isMultiValue) {
 				$value = $propertyDetails->value;
 				if ($this->isContentData($value)) {
+					$this->_properties["content_string"] = $value;
 					$value = new ContentData($this, $name);
 				}
 			} else {
