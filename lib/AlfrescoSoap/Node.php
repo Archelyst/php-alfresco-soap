@@ -20,6 +20,7 @@
 
 namespace AlfrescoSoap;
 
+use RuntimeException;
 use AlfrescoSoap\WebService\WebServiceFactory;
 
 class Node extends BaseObject {

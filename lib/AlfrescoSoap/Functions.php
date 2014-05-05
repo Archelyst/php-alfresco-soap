@@ -20,6 +20,8 @@
 
 namespace AlfrescoSoap;
 
+use RuntimeException;
+
 /**
  * Uploads a file into content store and returns the content data string which
  * can be used to populate a content property.

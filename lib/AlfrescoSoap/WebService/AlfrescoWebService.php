@@ -20,6 +20,16 @@
 
 namespace AlfrescoSoap\WebService;
 
+use DOMAttr;
+use DOMDocument;
+use DOMElement;
+use RuntimeException;
+use SoapClient;
+use SoapFault;
+use SoapHeader;
+
+use AlfrescoSoap\Repository;
+
 class AlfrescoWebService extends SoapClient {
 	private $securityExtNS = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd";
 	private $wsUtilityNS = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd";
@@ -39,7 +49,7 @@ class AlfrescoWebService extends SoapClient {
 		return $this->__soapCall($function_name, $arguments);
 	}
 
-	public function __soapCall($function_name, $arguments, $options = array(), $input_headers = array(), $output_headers = array()) {
+	public function __soapCall($function_name, $arguments, $options = null, $input_headers = null, &$output_headers = null) {
 		if (isset($this->ticket)) {
 			// Automatically add a security header
 			$input_headers[] = new SoapHeader($this->securityExtNS, 'Security', NULL, 1);
