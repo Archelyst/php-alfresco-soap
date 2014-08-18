@@ -167,7 +167,7 @@ class ContentData extends BaseObject {
 			//$content = null;
 			if ($this->_newFileContent != NULL) {
 				// Upload the content to the repository
-				$contentData = upload_file($this->node->session, $this->_newFileContent, $this->_mimetype, $this->_encoding);
+				$contentData = Functions::upload_file($this->node->session, $this->_newFileContent, $this->_mimetype, $this->_encoding);
 
 				// Set the content property value
 				$this->addStatement(
